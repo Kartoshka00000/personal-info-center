@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Личный Информационный Центр | ЛР6</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Личный Информационный Центр</h1>
+        <nav id="tabs">
+            <button data-tab="profile" class="active">👤 Профиль</button>
+            <button data-tab="weather">☁️ Погода</button>
+            <button data-tab="cats">🐱 Факты о Кошках</button>
+            <button data-tab="assistant">🤖 Ассистент</button>
+        </nav>
+    </header>
+
+    <main>
+        <div id="loadingSpinner" class="spinner"></div>
+        
+        <section id="profile" class="tab-content active">
+            <h2>Настройки Профиля (Ваша клиентская БД)</h2>
+            
+            <div class="profile-avatar-section">
+                <img id="avatarPreview" src="https://via.placeholder.com/150?text=Avatar" alt="Аватар" class="avatar-preview">
+                
+                <label for="avatarUpload" class="btn">Загрузить/Сменить Аватар</label> 
+                
+                <input type="file" id="avatarUpload" accept="image/*"> 
+                <button id="saveProfileButton">Сохранить Профиль</button>
+            </div>
+
+            <div class="form-group">
+                <label for="userName">Ваше Имя:</label>
+                <input type="text" id="userName" placeholder="Введите имя">
+            </div>
+            
+            <div class="form-group theme-toggle">
+                <label for="themeToggle">Тёмная Тема:</label>
+                <input type="checkbox" id="themeToggle">
+            </div>
+            
+            <button id="clearButton" class="btn-danger">Очистить Все Данные (LocalStorage)</button>
+
+            <h3>История Запросов Погоды</h3>
+            <ul id="weatherHistory">
+                </ul>
+        </section>
+
+        <section id="weather" class="tab-content">
+            <h2>Прогноз Погоды</h2>
+            <div class="form-group api-input">
+                <input type="text" id="cityInput" placeholder="Введите город (например, London)">
+                <button id="fetchWeatherButton">Показать Погоду</button>
+            </div>
+            
+            <div id="weatherResult" class="result-box">
+                </div>
+        </section>
+
+        <section id="cats" class="tab-content">
+            <h2>Случайные Факты о Кошках</h2>
+            <button id="generateCatArticleButton">Показать Случайный Факт</button>
+            
+            <div id="catResultContainer" class="result-box article-container">
+                <p class="muted">Нажмите "Показать Случайный Факт" для получения контента.</p>
+            </div>
+        </section>
+
+        <section id="assistant" class="tab-content">
+            <h2>Персональный Ассистент (Локальный режим)</h2>
+            <div id="chatWindow" class="chat-window">
+                <div class="message assistant-message">
+                    Привет! Я ваш локальный помощник. Я могу отвечать на простые команды (имя, тема, погода, кошки).
+                </div>
+            </div>
+            <div class="chat-input">
+                <input type="text" id="userInput" placeholder="Спросите о настройках или навигации...">
+                <button id="sendMessageButton">Отправить</button>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

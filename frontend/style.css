@@ -1,0 +1,256 @@
+/* Базовые стили */
+:root {
+    --bg-color: #f4f4f9;
+    --text-color: #333;
+    --primary-color: #007bff;
+    --secondary-color: #6c757d;
+    --card-bg: #fff;
+    --border-color: #ddd;
+}
+
+/* Тёмная Тема */
+body.dark-theme {
+    --bg-color: #121212;
+    --text-color: #e0e0e0;
+    --primary-color: #90caf9;
+    --secondary-color: #bbbbbb;
+    --card-bg: #1e1e1e;
+    --border-color: #333;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+header {
+    background-color: var(--card-bg);
+    border-bottom: 1px solid var(--border-color);
+    padding: 10px 20px;
+}
+
+nav#tabs {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+nav#tabs button {
+    background: none;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    color: var(--text-color);
+    border-bottom: 3px solid transparent;
+    transition: border-bottom 0.2s;
+}
+
+nav#tabs button.active {
+    border-bottom: 3px solid var(--primary-color);
+    font-weight: bold;
+}
+
+main {
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.tab-content {
+    background-color: var(--card-bg);
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: none; /* Скрыто по умолчанию */
+}
+
+.tab-content.active {
+    display: block; /* Отображается при активной вкладке */
+}
+
+/* Скрытие спиннера по умолчанию */
+#loadingSpinner {
+    display: none;
+}
+
+/* Элементы формы */
+.form-group {
+    margin-bottom: 15px;
+}
+
+input[type="text"], input[type="number"], .result-box {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    box-sizing: border-box;
+}
+
+.api-input {
+    display: flex;
+    gap: 10px;
+}
+
+.api-input input {
+    flex-grow: 1;
+}
+
+button, .profile-avatar-section .btn { 
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: var(--primary-color);
+    color: white;
+    transition: opacity 0.2s;
+    text-align: center; 
+    display: block; 
+}
+
+button:hover, .profile-avatar-section .btn:hover {
+    opacity: 0.9;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    margin-top: 10px;
+}
+
+/* Сообщения */
+.result-box {
+    margin-top: 15px;
+    padding: 15px;
+    border: 1px solid var(--border-color);
+}
+
+.error {
+    color: #dc3545;
+    font-weight: bold;
+}
+
+.muted {
+    color: var(--secondary-color);
+    font-style: italic;
+}
+
+/* Спиннер */
+.spinner {
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    border-left-color: var(--primary-color);
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    animation: spin 1s linear infinite;
+    margin: 20px auto;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Профиль - Аватар */
+.profile-avatar-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+    gap: 10px;
+}
+
+.avatar-preview {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--primary-color);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+/* Скрытие input type="file" */
+#avatarUpload {
+    display: none;
+}
+
+/* Статьи о кошках/Факты */
+.article-container h3 {
+    color: var(--primary-color);
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+
+.article-image {
+    width: 100%;
+    max-width: 400px; 
+    height: auto;
+    display: block;
+    margin: 15px auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    background-color: var(--bg-color); 
+}
+
+/* Стили для Чат-Ассистента */
+.chat-window {
+    height: 300px;
+    border: 1px solid var(--border-color);
+    padding: 15px;
+    margin-bottom: 15px;
+    overflow-y: auto;
+    background-color: var(--bg-color);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.chat-input {
+    display: flex;
+    gap: 10px;
+}
+
+.chat-input input {
+    flex-grow: 1;
+}
+
+.message {
+    max-width: 75%;
+    padding: 8px 12px;
+    border-radius: 18px;
+    font-size: 0.95em;
+    line-height: 1.4;
+}
+
+.user-message {
+    background-color: var(--primary-color);
+    color: white;
+    align-self: flex-end; 
+    border-bottom-right-radius: 4px;
+}
+
+.assistant-message {
+    background-color: var(--secondary-color);
+    color: white;
+    align-self: flex-start; 
+    border-bottom-left-radius: 4px;
+}
+
+/* Адаптивность */
+@media (max-width: 600px) {
+    nav#tabs {
+        flex-direction: column;
+        gap: 5px;
+    }
+    nav#tabs button {
+        width: 100%;
+    }
+    .api-input {
+        flex-direction: column;
+    }
+}
